@@ -1,0 +1,110 @@
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --bg: #f5f6fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --low: #10b981;
+  --medium: #f59e0b;
+  --high: #ef4444;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+.hidden { display: none !important; }
+
+/* Auth */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.auth-card {
+  background: var(--card);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  width: 360px;
+}
+.auth-card h1 { color: var(--primary); font-size: 28px; }
+.subtitle { color: var(--muted); margin-bottom: 24px; font-size: 14px; }
+.tabs { display: flex; margin-bottom: 20px; border-bottom: 1px solid var(--border); }
+.tab-btn {
+  flex: 1; padding: 10px; border: none; background: none;
+  cursor: pointer; color: var(--muted); font-weight: 600;
+}
+.tab-btn.active { color: var(--primary); border-bottom: 2px solid var(--primary); }
+.auth-form { display: flex; flex-direction: column; gap: 12px; }
+.auth-form input, .auth-form button {
+  padding: 12px; border-radius: 8px; border: 1px solid var(--border); font-size: 14px;
+}
+.auth-form button {
+  background: var(--primary); color: white; border: none; cursor: pointer; font-weight: 600;
+}
+.auth-form button:hover { background: var(--primary-dark); }
+.error { color: var(--high); margin-top: 12px; font-size: 13px; }
+
+/* Dashboard */
+.dashboard { max-width: 900px; margin: 0 auto; padding: 24px; }
+.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.topbar h2 { color: var(--primary); }
+.user-info { display: flex; align-items: center; gap: 12px; color: var(--muted); }
+.user-info button { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border); background: white; cursor: pointer; }
+
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+.stat-card { background: var(--card); border-radius: 12px; padding: 16px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.stat-card .num { font-size: 24px; font-weight: 700; color: var(--primary); }
+.stat-card .label { font-size: 12px; color: var(--muted); text-transform: uppercase; }
+
+.controls { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.controls button {
+  background: var(--primary); color: white; border: none; padding: 10px 18px;
+  border-radius: 8px; cursor: pointer; font-weight: 600;
+}
+.controls select {
+  padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: white;
+}
+
+.task-list { display: flex; flex-direction: column; gap: 10px; }
+.task-card {
+  background: var(--card); border-radius: 12px; padding: 16px 18px;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 4px solid var(--medium);
+}
+.task-card.low { border-left-color: var(--low); }
+.task-card.medium { border-left-color: var(--medium); }
+.task-card.high { border-left-color: var(--high); }
+.task-card .title { font-weight: 600; }
+.task-card .meta { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.task-card .actions button {
+  border: none; background: none; cursor: pointer; margin-left: 8px; font-size: 14px;
+}
+.badge {
+  display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600;
+  background: var(--bg); margin-right: 6px;
+}
+
+/* Modal */
+.modal {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+  display: flex; align-items: center; justify-content: center;
+}
+.modal-card { background: white; padding: 28px; border-radius: 16px; width: 380px; }
+.modal-card h3 { margin-bottom: 16px; }
+#task-form { display: flex; flex-direction: column; gap: 10px; }
+#task-form input, #task-form textarea, #task-form select {
+  padding: 10px; border-radius: 8px; border: 1px solid var(--border); font-family: inherit;
+}
+.modal-row { display: flex; gap: 10px; }
+.modal-row select { flex: 1; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; }
+.modal-actions button { padding: 10px 16px; border-radius: 8px; border: none; cursor: pointer; }
+#cancel-btn { background: var(--bg); }
+#task-form button[type="submit"] { background: var(--primary); color: white; }
