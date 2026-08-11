@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskFlow — Task Manager</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <!-- AUTH SCREEN -->
+  <div id="auth-screen" class="auth-wrapper">
+    <div class="auth-card">
+      <h1>TaskFlow</h1>
+      <p class="subtitle">Manage your work, one task at a time.</p>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="login">Login</button>
+        <button class="tab-btn" data-tab="register">Register</button>
+      </div>
+
+      <form id="login-form" class="auth-form">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+
+      <form id="register-form" class="auth-form hidden">
+        <input type="text" id="reg-name" placeholder="Full Name" required>
+        <input type="email" id="reg-email" placeholder="Email" required>
+        <input type="password" id="reg-password" placeholder="Password (min 6 chars)" required>
+        <button type="submit">Create Account</button>
+      </form>
+
+      <p id="auth-error" class="error hidden"></p>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="dashboard hidden">
+    <header class="topbar">
+      <h2>TaskFlow</h2>
+      <div class="user-info">
+        <span id="user-name"></span>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <section class="stats-row" id="stats-row"></section>
+
+    <section class="controls">
+      <button id="new-task-btn">+ New Task</button>
+      <select id="filter-status">
+        <option value="">All Statuses</option>
+        <option value="pending">Pending</option>
+        <option value="in_progress">In Progress</option>
+        <option value="completed">Completed</option>
+      </select>
+      <select id="filter-priority">
+        <option value="">All Priorities</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <select id="sort-by">
+        <option value="created_at">Newest</option>
+        <option value="due_date">Due Date</option>
+        <option value="priority">Priority</option>
+      </select>
+    </section>
+
+    <section id="task-list" class="task-list"></section>
+  </div>
+
+  <!-- TASK MODAL -->
+  <div id="task-modal" class="modal hidden">
+    <div class="modal-card">
+      <h3 id="modal-title">New Task</h3>
+      <form id="task-form">
+        <input type="hidden" id="task-id">
+        <input type="text" id="task-title" placeholder="Title" required>
+        <textarea id="task-description" placeholder="Description"></textarea>
+        <div class="modal-row">
+          <select id="task-status">
+            <option value="pending">Pending</option>
+            <option value="in_progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+          <select id="task-priority">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <input type="date" id="task-due">
+        <div class="modal-actions">
+          <button type="button" id="cancel-btn">Cancel</button>
+          <button type="submit">Save Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
